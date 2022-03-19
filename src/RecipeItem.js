@@ -4,11 +4,13 @@ import Recipe from "./Recipe";
 function RecipeItem(props) {
   return (
     <>
-      <h2>
-        {props.recipeInfo.map((data) => (
-          <Recipe info={data} key={data.id} />
-        ))}
-      </h2>
+      <h3>
+        <div className="container">
+          {props.recipeInfo.map((data) => (
+            <Recipe info={data} key={data.id} />
+          ))}
+        </div>
+      </h3>
     </>
   );
 }
