@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RecipeItem from "./RecipeItem";
 
 function App() {
@@ -12,20 +12,28 @@ function App() {
     );
     const data = await response.json();
     setRecipeData(data);
-    console.log("data here:", recipeData);
+    setUserIngredient("");
+    setNumOfRecipes(0);
+    console.log("data here", data);
   };
+
+  useEffect(() => {
+    getRecipeData();
+  }, []);
 
   return (
     <>
       <div className="App">
         <form className="form-control">
           <input
+            value={userIngredient}
             type="text"
             onChange={(e) => setUserIngredient(e.target.value)}
             required
-            placeholder="Ingredient"
+            placeholder="Search an ingredient"
           ></input>
           <select
+            value={numOfRecipes}
             name="number"
             id="number"
             onChange={(e) => setNumOfRecipes(e.target.value)}
